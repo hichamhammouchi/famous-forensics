@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="FAMOUS aggregate domain forensics: security indicators, behavioral groups and pseudonymous infrastructure networks.">
+  <meta name="color-scheme" content="dark"><title>FAMOUS: Domain forensics</title>
+  <link rel="icon" href="./famous-icon.png" type="image/png"><link rel="stylesheet" href="./styles.css">
+  <script defer src="./vendor/d3.min.js"></script><script defer src="./vendor/topojson.min.js"></script><script defer src="./vendor/cytoscape.min.js"></script><script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to charts</a>
+  <header class="masthead"><a class="brand" href="#overview"><img src="./famous-icon.png" alt="FAMOUS"><span>FAMOUS <b>Domain forensics</b></span></a><div class="header-actions"><a id="full-link" href="./" target="_blank" rel="noopener">Open full view ↗</a></div></header>
+  <div class="dashboard">
+    <section id="metrics" class="metrics" aria-label="Summary statistics"></section>
+    <nav id="navigation" aria-label="Forensic views"></nav>
+    <section class="filterbar" aria-label="Filter the dataset">
+      <label>Country association<select id="country"><option value="">All countries</option></select></label>
+      <label>Hosting provider<select id="provider"><option value="">All providers</option></select></label>
+      <button id="advanced-toggle" class="button secondary" aria-expanded="false" aria-controls="advanced-filters">More filters <span id="filter-count"></span></button>
+      <button id="reset" class="text-button">Reset</button><span id="scope" role="status" aria-live="polite"></span>
+    </section>
+    <section id="advanced-filters" class="advanced-filters" hidden>
+      <label>Registrar<select id="registrar"><option value="">All registrars</option></select></label>
+      <label>Behavior group<select id="group" aria-describedby="group-help"><option value="">All groups</option><option value="0">Group 0</option><option value="1">Group 1</option><option value="2">Group 2</option></select><small id="group-help" class="control-help">Sites grouped by similar measured features.</small></label>
+      <label>Platform<select id="platform"><option value="">All platforms</option></select></label>
+      <label>Service<select id="service"><option value="">All services</option></select></label>
+      <label>Minimum JS score<input id="js" type="number" min="0" max="10" step="0.5" value="0"></label>
+      <label>Minimum high ZAP alerts<input id="zap" type="number" min="0" step="1" value="0"></label>
+      <label class="check"><input id="vt" type="checkbox">VT flagged only</label><label class="check"><input id="cf" type="checkbox">Cloudflare only</label><label class="check"><input id="multi" type="checkbox">Shared favicon only</label>
+    </section>
+    <main id="main" tabindex="-1"><div class="empty">Loading the snapshot…</div></main>
+
+  </div>
+  <div id="chart-tip" class="chart-tooltip" role="tooltip" hidden></div>
+  <noscript>JavaScript is required to view these charts.</noscript>
+</body>
+</html>
